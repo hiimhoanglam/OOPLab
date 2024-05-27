@@ -1,0 +1,103 @@
+TESTING ARRAY VECTOR
+Vector 1
+Empty vector
+[]
+Inserting values into the last position
+[1.0 1.0]
+Removing at a specific index
+[1.0]
+new form of vector 1
+[1.0 2.0 3.0 4.0 5.0]
+testing getting coordinate at a specific index
+4.0
+setting a specific index with a specific value
+[1.0 2.0 3.0 4.0 10.0]
+getting the norm of the vector
+11.40175425099138
+____________________________________________________________________________
+Vector 2
+[1.0 2.0 3.0 4.0 5.0]
+adding each coordinate with a value
+[2.0 3.0 4.0 5.0 6.0]
+adding the original vector with vector1
+[3.0 5.0 7.0 9.0 16.0]
+all coordinates to the power of 2
+[9.0 25.0 49.0 81.0 256.0]
+all coordinates multiply by 3
+[18.0 50.0 98.0 162.0 512.0]
+Extracting from array of indices
+[50.0 18.0]
+****************************************************
+TESTING LIST VECTOR
+Vector 1
+Empty vector
+[]
+Inserting values into the last position
+[1.0 1.0]
+Removing at a specific index
+[1.0]
+new form of vector 1
+[1.0 2.0 3.0 4.0 5.0]
+testing getting coordinate at a specific index
+4.0
+setting a specific index with a specific value
+[1.0 2.0 3.0 4.0 10.0]
+getting the norm of the vector
+11.40175425099138
+____________________________________________________________________________
+Vector 2
+[1.0 2.0 3.0 4.0 5.0]
+adding each coordinate with a value
+[2.0 3.0 4.0 5.0 6.0]
+adding the original vector with vector1
+[3.0 5.0 7.0 9.0 16.0]
+all coordinates to the power of 2
+[9.0 25.0 49.0 81.0 256.0]
+all coordinates multiply by 3
+[18.0 50.0 98.0 162.0 512.0]
+Extracting from array of indices
+[50.0 18.0]
+****************************************************
+TESTING BASIC STATISTICS
+Original vector list
+[9.0 9.0 6.0 3.0]
+[9.0 2.0 0.0 4.0]
+[4.0 0.0 0.0 3.0]
+[4.0 9.0 4.0 2.0]
+[3.0 5.0 1.0 6.0]
+[9.0 6.0 5.0 6.0]
+[3.0 4.0 6.0 1.0]
+[7.0 1.0 9.0 2.0]
+[8.0 9.0 6.0 2.0]
+[2.0 2.0 7.0 7.0]
+********************************************
+Max norm = 14.38749456993816
+Min norm = 5.0
+Printing the ascending array of vectors according to the norm of vectors
+[4.0 0.0 0.0 3.0]
+[3.0 4.0 6.0 1.0]
+[3.0 5.0 1.0 6.0]
+[9.0 2.0 0.0 4.0]
+[2.0 2.0 7.0 7.0]
+[4.0 9.0 4.0 2.0]
+[7.0 1.0 9.0 2.0]
+[9.0 6.0 5.0 6.0]
+[8.0 9.0 6.0 2.0]
+[9.0 9.0 6.0 3.0]
+Printing the descending array of vectors according to the norm of vectors
+[9.0 9.0 6.0 3.0]
+[8.0 9.0 6.0 2.0]
+[9.0 6.0 5.0 6.0]
+[7.0 1.0 9.0 2.0]
+[4.0 9.0 4.0 2.0]
+[2.0 2.0 7.0 7.0]
+[9.0 2.0 0.0 4.0]
+[3.0 5.0 1.0 6.0]
+[3.0 4.0 6.0 1.0]
+[4.0 0.0 0.0 3.0]
+Printing the rank of the vectors by norm
+[10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+Printing the array of vectors in the 5 to 10 range according to their norm
+[3.0 5.0 1.0 6.0]
+[3.0 4.0 6.0 1.0]
+[4.0 0.0 0.0 3.0]
