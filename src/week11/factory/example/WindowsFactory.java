@@ -1,6 +1,6 @@
-package factory.abstractfactory;
+package week11.factory.example;
 
-public class WindowsFactory extends GUIFactory{
+public class WindowsFactory extends GUIFactory {
     @Override
     public Button createButton() {
         return new WindowsButton();

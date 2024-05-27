@@ -1,4 +1,4 @@
-package myvector;
+package midtemra4.myvector;
 
 public interface MyVector extends Comparable<MyVector> {
 

@@ -1,4 +1,4 @@
-package hus.oop.polynomial;
+package midtermkhoakhoa.polynomial;
 
 public abstract class AbstractPolynomial implements Polynomial {
     /**
@@ -7,7 +7,17 @@ public abstract class AbstractPolynomial implements Polynomial {
      */
     @Override
     public String toString() {
-        /* TODO *
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int deg = 0; deg < degree() - 1; deg++) {
+            sb.append(coefficientAt(deg)).append(" ");
+            if (deg != 0) {
+                sb.append("x ^ ").append(deg);
+            }
+            sb.append(" + ");
+        }
+        String result = sb.toString();
+        return result.substring(0, result.length() - 3) + "]";
     }
 
     /**
@@ -16,5 +26,10 @@ public abstract class AbstractPolynomial implements Polynomial {
      */
     public double[] differentiate() {
         /* TODO */
+        double[] result = new double[this.coefficients().length - 1];
+        for (int i = 1; i < degree() - 1; i++) {
+            result[i-1] = coefficientAt(i) * i;
+        }
+        return result;
     }
 }

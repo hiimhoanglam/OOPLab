@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package finalweek12.mylist;
 
 public class MyLinkedList extends MyAbstractList {
     private MyLinkedListNode head;
@@ -8,7 +8,8 @@ public class MyLinkedList extends MyAbstractList {
      * Khởi tạo dữ liệu mặc định.
      */
     public MyLinkedList() {
-        /* TODO */
+        //Default value for head = 0
+        this.head = new MyLinkedListNode(0);
     }
 
     /**
@@ -17,7 +18,7 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public int size() {
-        /* TODO */
+        return this.size;
     }
 
     /**
@@ -27,7 +28,8 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public Object get(int index) {
-        /* TODO */
+        checkIndex(index);
+        return getNodeByIndex(index).getPayload();
     }
 
     /**
@@ -36,7 +38,19 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public void remove(int index) {
-        /* TODO */
+        checkIndex(index);
+        //If removing the element at index 0, make the next element of the old head the new head
+        if (index == 0) {
+            head = head.getNext();
+        }
+        else {
+            MyLinkedListNode prevNode = getNodeByIndex(index - 1);
+            MyLinkedListNode currNode = getNodeByIndex(index);
+            prevNode.setNext(currNode.getNext());
+            currNode.setNext(null);
+        }
+
+        size--;
     }
 
     /**
@@ -45,7 +59,16 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public void append(Object payload) {
-        /* TODO */
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
+        if (size == 0) {
+            //If the linked list is empty, init the new element as the head
+            this.head = newNode;
+        }
+        else {
+            MyLinkedListNode lastNode = getNodeByIndex(size - 1);
+            lastNode.setNext(newNode);
+        }
+        size++;
     }
 
     /**
@@ -55,7 +78,24 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public void insert(Object payload, int index) {
-        /* TODO */
+        //If the index is the size of the LL or the list is empty, then call the append function which will handle the
+        //case of init the head element
+        if (index == size || size == 0) {
+            append(payload);
+            return;
+        }
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
+        if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
+        }
+        else {
+            MyLinkedListNode prevNode = getNodeByIndex(index - 1);
+            MyLinkedListNode currNode = getNodeByIndex(index);
+            prevNode.setNext(newNode);
+            newNode.setNext(currNode);
+        }
+        size++;
     }
 
     /**
@@ -64,7 +104,8 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public MyIterator iterator() {
-        /* TODO */
+        //The data for the iterator is the head of the LL to iterate
+        return new MyLinkedListIterator(head);
     }
 
     /**
@@ -73,6 +114,11 @@ public class MyLinkedList extends MyAbstractList {
      * @return
      */
     private MyLinkedListNode getNodeByIndex(int index) {
-        /* TODO */
+        //This function does not have to worry about the index out of bounds
+        MyLinkedListNode temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.getNext();
+        }
+        return temp;
     }
 }

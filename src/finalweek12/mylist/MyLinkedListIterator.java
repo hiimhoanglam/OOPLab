@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package finalweek12.mylist;
 
 public class MyLinkedListIterator implements MyIterator {
     /* GỢI Ý: */
@@ -7,6 +7,8 @@ public class MyLinkedListIterator implements MyIterator {
     các phần tử còn lại trong MyLinkedList.
      */
     private MyLinkedListNode currentNode;
+    //Save the head to a temp variable
+    private final MyLinkedListNode head;
 
     /**
      * Khởi tạo dữ liệu cho Iterator là node hiện tại trong MyLinkedList.
@@ -14,6 +16,7 @@ public class MyLinkedListIterator implements MyIterator {
      */
     public MyLinkedListIterator(MyLinkedListNode node) {
         this.currentNode = node;
+        this.head = currentNode;
     }
 
     /**
@@ -23,7 +26,7 @@ public class MyLinkedListIterator implements MyIterator {
      */
     @Override
     public boolean hasNext() {
-        /* TODO */
+        return currentNode != null;
     }
 
     /**
@@ -32,6 +35,14 @@ public class MyLinkedListIterator implements MyIterator {
      */
     @Override
     public Object next() {
-        /* TODO */
+        Object currObj = currentNode.getPayload();
+        currentNode = currentNode.getNext();
+        return currObj;
+    }
+
+    @Override
+    public void reset() {
+        //Reset the current pointer back to the head of the LL
+        this.currentNode = head;
     }
 }

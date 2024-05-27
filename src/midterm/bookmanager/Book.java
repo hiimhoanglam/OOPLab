@@ -23,23 +23,30 @@ public class Book implements MyBookComparable {
         }
 
         public BookBuilder withAuthor(String author) {
-            /* TODO */
+            this.author = author;
+            return this;
         }
 
         public BookBuilder withGenre(String genre) {
-            /* TODO */
+            this.genre = genre;
+            return this;
         }
 
         public BookBuilder withPages(int pages) {
-            /* TODO */
+            this.pages = pages;
+            return this;
         }
 
         public BookBuilder withPrice(double price) {
             /* TODO */
+            this.price = price;
+            return this;
         }
 
         public BookBuilder withPublisher(String publisher) {
             /* TODO */
+            this.publisher = publisher;
+            return this;
         }
 
         public Book build() {
@@ -80,7 +87,12 @@ public class Book implements MyBookComparable {
 
     @Override
     public String toString() {
-        /* TODO */
+        return "Title: " + title + ", " +
+                "Author: " + author + ", " +
+                "Genre: " + genre + ", " +
+                "Pages: " + pages + ", " +
+                "Price: $" + price + ", " +
+                "Publisher: " + publisher + "\n";
     }
 
     /**
@@ -92,5 +104,10 @@ public class Book implements MyBookComparable {
     @Override
     public int compareTo(Book another) {
         /* TODO */
+        int genreComparison = another.getGenre().compareTo(this.getGenre());
+        if (genreComparison != 0) {
+            return genreComparison;
+        }
+        return this.title.compareTo(another.getTitle());
     }
 }

@@ -1,2 +1,4 @@
-package week11.iterator.pseudocode;public class SocialSpammer {
+package week11.iterator.pseudocode;
+
+public class SocialSpammer {
 }

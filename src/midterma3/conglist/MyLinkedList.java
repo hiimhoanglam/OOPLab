@@ -1,4 +1,4 @@
-package hus.oop.midterm.mylist;
+package midterma3.conglist;
 
 public class MyLinkedList extends MyAbstractList {
     private MyLinkedListNode head;

@@ -1,6 +1,6 @@
-package factory.abstractfactory;
+package week11.factory.example;
 
-public class MacFactory extends GUIFactory{
+public class MacFactory extends GUIFactory {
     @Override
     public Button createButton() {
         return new MacButton();

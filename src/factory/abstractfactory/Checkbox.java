@@ -1,2 +1,5 @@
-package factory.abstractfactory;public class Checkbox {
+package factory.abstractfactory;
+
+public interface Checkbox {
+    void onClick();
 }

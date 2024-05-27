@@ -1,4 +1,4 @@
-package mystudents;
+package midtemra4.mystudents;
 
 public class MyLinkedList extends MyAbstractList {
     private MyLinkedListNode head;

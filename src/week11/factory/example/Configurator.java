@@ -1,4 +1,4 @@
-package factory.abstractfactory;
+package week11.factory.example;
 
 import java.util.Scanner;
 

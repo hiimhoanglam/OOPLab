@@ -1,4 +1,4 @@
-package midterma3.statistics;
+package midterma3.hoanglamstatistics;
 
 import java.util.Arrays;
 
@@ -111,6 +111,9 @@ public class ArrayDataSet extends AbstractDataSet {
         while (i < size) {
             if (data[i] == value) {
                 remove(i);
+            }
+            else {
+                i++;
             }
         }
     }

@@ -1,6 +1,7 @@
-package week10.observer.pseudocode;
-import java.util.List;
+package week11.observer.pseudocode;
+
 import java.util.ArrayList;
+import java.util.List;
 public class EventManager {
     private List<EventListeners> listenersList = new ArrayList<>();
     public void subscribe(EventListeners listeners) {

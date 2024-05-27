@@ -1,2 +1,5 @@
-package week10.decorator.uml2;public interface IceCream {
+package week10.decorator.uml2;
+
+public interface IceCream {
+    String getDescription();
 }

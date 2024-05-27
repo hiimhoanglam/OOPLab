@@ -1,2 +1,9 @@
-package week10.decorator.uml1;public class Rectangle {
+package week10.decorator.uml1;
+
+public class Rectangle implements Shape{
+    @Override
+    public void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+
 }

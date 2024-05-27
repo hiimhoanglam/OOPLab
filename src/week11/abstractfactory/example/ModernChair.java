@@ -1,2 +1,8 @@
-package week11.abstractfactory.example;public class ModernChair {
+package week11.abstractfactory.example;
+
+public class ModernChair implements Chair{
+    @Override
+    public void sitOn() {
+        System.out.println("Sitting on modern chair");
+    }
 }

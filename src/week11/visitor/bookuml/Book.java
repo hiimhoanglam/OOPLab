@@ -1,4 +1,4 @@
-package week11.visitor.computeruml;
+package week11.visitor.bookuml;
 
 public interface Book {
     void accept(Visitor v);

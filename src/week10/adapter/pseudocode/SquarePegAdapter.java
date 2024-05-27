@@ -1,4 +1,4 @@
-package week10.adapter;
+package week10.adapter.pseudocode;
 
 public class SquarePegAdapter extends RoundPeg{
     private SquarePeg peg;

@@ -1,4 +1,4 @@
-package hus.oop.midterm.statistics;
+package midterma3.congstatistics;
 
 public class ArrayDataSet extends AbstractDataSet {
     private static final int DEFAULT_CAPACITY = 2;

@@ -10,6 +10,12 @@ public class ArrayMyList extends AbstractMyList {
      */
     public ArrayMyList() {
         /* TODO */
+        this.data = new int[DEFAULT_CAPACITY];
+        this.size = 0;
+    }
+    public ArrayMyList(int[] data) {
+        this.data = data;
+        this.size = data.length;
     }
 
     /**
@@ -19,6 +25,7 @@ public class ArrayMyList extends AbstractMyList {
     @Override
     public int size() {
         /* TODO */
+        return this.size;
     }
 
     /**
@@ -28,17 +35,24 @@ public class ArrayMyList extends AbstractMyList {
      */
     @Override
     public int get(int index) {
-        /* TODO */
+        if (checkBoundaries(index, size - 1)) {
+            return -1;
+        }
+        return data[index];
     }
 
     /**
      * Sửa dữ liệu ở vị trí index thành data.
-     * @param data
+     * @param value
      * @param index
      */
     @Override
-    public void set(int data, int index) {
+    public void set(int value, int index) {
         /* TODO */
+        if (checkBoundaries(index, size - 1)) {
+            return;
+        }
+        data[index] = value;
     }
 
     /**
@@ -49,6 +63,14 @@ public class ArrayMyList extends AbstractMyList {
     @Override
     public void insertAtStart(int value) {
         /* TODO */
+        if (size == data.length) {
+            allocateMore();
+        }
+        for (int i = size; i > 0; i--) {
+            data[i] = data[i-1];
+        }
+        data[0] = value;
+        size++;
     }
 
     /**
@@ -58,7 +80,11 @@ public class ArrayMyList extends AbstractMyList {
      */
     @Override
     public void insertAtEnd(int value) {
-        /* TODO */
+        if (size == data.length) {
+            allocateMore();
+        }
+        data[size] = value;
+        size++;
     }
 
     /**
@@ -69,7 +95,15 @@ public class ArrayMyList extends AbstractMyList {
      */
     @Override
     public void insertAtPos(int value, int index) {
-        /* TODO */
+        if (size == data.length) {
+            allocateMore();
+        }
+        checkBoundaries(index, size - 1);
+        for (int i = size; i > index; i--) {
+            data[i] = data[i - 1];
+        }
+        data[index] = value;
+        size++;
     }
 
     /**
@@ -80,6 +114,11 @@ public class ArrayMyList extends AbstractMyList {
     @Override
     public void remove(int index) {
         /* TODO */
+        checkBoundaries(index, size - 1);
+        for (int i = index; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        size--;
     }
 
     /**
@@ -87,6 +126,13 @@ public class ArrayMyList extends AbstractMyList {
      */
     private void allocateMore() {
         /* TODO */
+        int[] newData = new int[data.length * 2];
+        System.arraycopy(data,
+                0,
+                newData,
+                0,
+                size);
+        data = newData;
     }
 
     /**
@@ -95,6 +141,6 @@ public class ArrayMyList extends AbstractMyList {
      */
     @Override
     public int[] toArray() {
-        /* TODO */
+        return data;
     }
 }

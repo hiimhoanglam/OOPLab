@@ -1,6 +1,6 @@
-package factory.dialogproblem;
+package week11.factory.pseudocode;
 
-public class WindowsDialog extends Dialog{
+public class WindowsDialog extends Dialog {
     @Override
     public Button createButton() {
         return new WindowsButton();

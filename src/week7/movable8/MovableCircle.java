@@ -1,6 +1,6 @@
-package week7.movable4;
+package week7.movable8;
 
-public class MovableCircle implements Movable{
+public class MovableCircle implements Movable {
     private int radius;
     private MovablePoint center;
 

@@ -1,4 +1,4 @@
-package hus.oop.midterm.mylist;
+package midterma3.conglist;
 
 public class MyArrayList extends MyAbstractList {
     private static final int DEFAULT_CAPACITY = 2;
@@ -46,6 +46,7 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public void remove(int index) {
+
         for (int i = index; i < size - 1; i++) {
             data[i] = data[i + 1];
         }

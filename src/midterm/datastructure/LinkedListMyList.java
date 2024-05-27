@@ -1,5 +1,7 @@
 package midterm.datastructure;
 
+import midterma3.conglist.MyLinkedListNode;
+
 public class LinkedListMyList extends AbstractMyList {
     private Node start;
     private Node end;
@@ -9,12 +11,14 @@ public class LinkedListMyList extends AbstractMyList {
      * Hàm dựng khởi tạo list để chứa dữ liệu.
      */
     public LinkedListMyList() {
-        this.head = null;
+        this.start = null;
+        this.end = null;
     }
 
     @Override
     public int size() {
         /* TODO */
+        return this.size;
     }
 
     /**
@@ -25,6 +29,8 @@ public class LinkedListMyList extends AbstractMyList {
     @Override
     public int get(int index) {
         /* TODO */
+        Node node = getNodeByIndex(index);
+        return node.data;
     }
 
     /**
@@ -35,6 +41,8 @@ public class LinkedListMyList extends AbstractMyList {
     @Override
     public void set(int data, int index) {
         /* TODO */
+        Node node = getNodeByIndex(index);
+        node.data = data;
     }
 
     /**
@@ -43,7 +51,16 @@ public class LinkedListMyList extends AbstractMyList {
      */
     @Override
     public void insertAtStart(int value) {
-        /* TODO */
+        Node newNode = new Node(value);
+        if (size == 0) {
+            start = newNode;
+            end = newNode;
+        }
+        else {
+            newNode.next = start;
+            start = newNode;
+        }
+        size++;
     }
 
     /**
@@ -53,6 +70,15 @@ public class LinkedListMyList extends AbstractMyList {
     @Override
     public void insertAtEnd(int value) {
         /* TODO */
+        Node newNode = new Node(value);
+        if (size == 0) {
+            start = newNode;
+        }
+        else {
+            end.next = newNode;
+        }
+        end = newNode;
+        size++;
     }
 
     /**
@@ -64,6 +90,21 @@ public class LinkedListMyList extends AbstractMyList {
     @Override
     public void insertAtPos(int value, int index) {
         /* TODO */
+        checkBoundaries(index, size);
+        if (index == 0) {
+            insertAtStart(value);
+        }
+        else if (index == size) {
+            insertAtEnd(value);
+        }
+        else {
+            Node prev = getNodeByIndex(index - 1);
+            Node curr = getNodeByIndex(index);
+            Node newNode = new Node(value);
+            prev.next = newNode;
+            newNode.next = curr;
+            size++;
+        }
     }
 
     /**
@@ -74,6 +115,20 @@ public class LinkedListMyList extends AbstractMyList {
     @Override
     public void remove(int index) {
         /* TODO */
+        checkBoundaries(index, size - 1);
+        if (index == 0) {
+            start = start.next;
+        } else if (index == size - 1){
+            Node prev = getNodeByIndex(size - 2);
+            prev.next = null;
+            end = prev;
+        }
+        else {
+            Node prevNode = getNodeByIndex(index - 1);
+            Node currNode = prevNode.next;
+            prevNode.next = currNode.next;
+        }
+        size--;
     }
 
     /**
@@ -83,6 +138,12 @@ public class LinkedListMyList extends AbstractMyList {
      */
     private Node getNodeByIndex(int index) {
         /* TODO */
+        checkBoundaries(index, size - 1);
+        Node currentNode = start;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
     }
 
     /**
@@ -92,5 +153,12 @@ public class LinkedListMyList extends AbstractMyList {
     @Override
     public int[] toArray() {
         /* TODO */
+        int[] result = new int[size];
+        Node curr = start;
+        for (int i = 0; i < size; i++) {
+            result[i] = curr.data;
+            curr = curr.next;
+        }
+        return result;
     }
 }

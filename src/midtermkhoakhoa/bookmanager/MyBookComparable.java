@@ -1,5 +1,5 @@
-package hus.oop.bookmanager;
-
-public interface MyBookComparable {
-    int compareTo(Book another);
-}
+//package midtermkhoakhoa.bookmanager;
+//
+//public interface MyBookComparable {
+//    int compareTo(Book another);
+//}

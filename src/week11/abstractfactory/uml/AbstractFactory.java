@@ -1,2 +1,5 @@
-package week11.abstractfactory.uml;public class AbstractFactory {
+package week11.abstractfactory.uml;
+
+public interface AbstractFactory {
+    Shape getShape(String shapeType);
 }

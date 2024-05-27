@@ -1,13 +1,16 @@
-package hus.oop.mylist;
+package finalweek12.mylist;
 
 public class BasicStatistic {
     private MyList data;
+    private MyIterator iterator;
+
 
     /**
      * Khởi tạo dữ liệu cho BasicStatistic.
      */
     public BasicStatistic(MyList data) {
-        /* TODO */
+        this.data = data;
+        this.iterator = data.iterator();
     }
 
     /**
@@ -15,7 +18,18 @@ public class BasicStatistic {
      * @return giá trị lớn nhất.
      */
     public double max() {
-        /* TODO */
+        if (data.size() == 0) {
+            throw new RuntimeException("empty array");
+        }
+        double max = Double.parseDouble(data.get(0).toString());
+        while (iterator.hasNext()) {
+            double curr = Double.parseDouble(iterator.next().toString());
+            if (curr > max) {
+                max = curr;
+            }
+        }
+        iterator.reset();
+        return max;
     }
 
     /**
@@ -23,7 +37,18 @@ public class BasicStatistic {
      * @return giá trị nhỏ nhất.
      */
     public double min() {
-        /* TODO */
+        if (data.size() == 0) {
+            throw new RuntimeException("empty array");
+        }
+        double min = Double.parseDouble(data.get(0).toString());
+        while (iterator.hasNext()) {
+            double curr = Double.parseDouble(iterator.next().toString());
+            if (curr < min) {
+                min = curr;
+            }
+        }
+        iterator.reset();
+        return min;
     }
 
     /**
@@ -31,7 +56,16 @@ public class BasicStatistic {
      * @return kỳ vọng.
      */
     public double mean() {
-        /* TODO */
+        if (data.size() == 0) {
+            throw new RuntimeException("empty array");
+        }
+        double mean = 0.0;
+        while (iterator.hasNext()) {
+            double curr = Double.parseDouble(iterator.next().toString());
+            mean += curr;
+        }
+        iterator.reset();
+        return mean / data.size();
     }
 
     /**
@@ -39,6 +73,16 @@ public class BasicStatistic {
      * @return phương sai.
      */
     public double variance() {
-        /* TODO */
+        if (data.size() == 0) {
+            throw new RuntimeException("empty array");
+        }
+        double mean = this.mean();
+        double result = 0.0;
+        while (iterator.hasNext()) {
+            double curr = Double.parseDouble(iterator.next().toString());
+            result += Math.pow(mean - curr, 2);
+        }
+        iterator.reset();
+        return result / (data.size() - 1);
     }
 }

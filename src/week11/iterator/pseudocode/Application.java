@@ -1,2 +1,4 @@
-package week11.iterator.pseudocode;public class Application {
+package week11.iterator.pseudocode;
+
+public class Application {
 }

@@ -1,4 +1,4 @@
-package week11.abstractfactory;
+package week11.abstractfactory.pseudocode;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package hus.oop.countryarraymanager;
+package week8.countrymanager.countryarraymanager;
 
 public class SouthAmericaCountry extends Country {
     private int population;

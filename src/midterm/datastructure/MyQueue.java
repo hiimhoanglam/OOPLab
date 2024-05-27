@@ -13,6 +13,7 @@ public class MyQueue {
      */
     public void add(int value) {
         /* TODO */
+        queueData.insertAtStart(value);
     }
 
     /**
@@ -21,6 +22,12 @@ public class MyQueue {
      */
     public int remove() {
         /* TODO */
+        if (isEmpty()) {
+            return -1;
+        }
+        int result = queueData.get(0);
+        queueData.remove(0);
+        return result;
     }
 
     /**
@@ -29,6 +36,7 @@ public class MyQueue {
      */
     public boolean isEmpty() {
         /* TODO */
+        return queueData.size() == 0;
     }
 
     /**
@@ -36,7 +44,10 @@ public class MyQueue {
      * @return giá trị ở vị trí đầu của queue.
      */
     public int peek() {
-        /* TODO */
+        if (isEmpty()) {
+            return -1;
+        }
+        return queueData.get(0);
     }
 
     /**
@@ -45,5 +56,9 @@ public class MyQueue {
      */
     public int size() {
         /* TODO */
+        return queueData.size();
+    }
+    public void printData() {
+        System.out.println(queueData);
     }
 }

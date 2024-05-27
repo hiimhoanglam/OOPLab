@@ -1,2 +1,8 @@
-package week7.movable3;public interface Movable {
+package week7.movable3;
+
+public interface Movable {
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
 }

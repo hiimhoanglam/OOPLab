@@ -1,4 +1,4 @@
-package hus.oop.polynomial;
+package midtermkhoakhoa.polynomial;
 
 public interface Polynomial {
     /**

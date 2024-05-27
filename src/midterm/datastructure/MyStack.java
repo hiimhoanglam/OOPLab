@@ -13,6 +13,7 @@ public class MyStack {
      */
     public void push(int value) {
         /* TODO */
+        stackData.insertAtEnd(value);
     }
 
     /**
@@ -21,6 +22,12 @@ public class MyStack {
      */
     public int pop() {
         /* TODO */
+        if (isEmpty()) {
+            return -1;
+        }
+        int result = stackData.get(size() - 1);
+        stackData.remove(size() - 1);
+        return result;
     }
 
     /**
@@ -29,6 +36,7 @@ public class MyStack {
      */
     public boolean isEmpty() {
         /* TODO */
+        return stackData.size() == 0;
     }
 
     /**
@@ -37,6 +45,7 @@ public class MyStack {
      */
     public int peek() {
         /* TODO */
+        return stackData.get(size() - 1);
     }
 
     /**
@@ -45,5 +54,9 @@ public class MyStack {
      */
     public int size() {
         /* TODO */
+        return stackData.size();
+    }
+    public void printData() {
+        System.out.println(stackData);
     }
 }

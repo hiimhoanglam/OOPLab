@@ -1,4 +1,4 @@
-package hus.oop.integration;
+package week12.integration;
 
 public interface Polynomial {
     /**

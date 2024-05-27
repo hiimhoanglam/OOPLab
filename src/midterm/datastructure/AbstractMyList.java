@@ -8,7 +8,7 @@ public abstract class AbstractMyList implements MyList {
      * @return
      */
     public boolean checkBoundaries(int index, int limit) {
-        /* TODO */
+       return index < 0 || index > limit;
     }
 
     /**
@@ -17,6 +17,13 @@ public abstract class AbstractMyList implements MyList {
      */
     @Override
     public String toString() {
-        /* TODO */
+        if (size() == 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < size(); i++) {
+            sb.append("[").append(get(i)).append("] ");
+        }
+        return sb.substring(0, sb.length() - 1);
     }
 }

@@ -1,6 +1,6 @@
-package factory.abstractfactory;
+package week11.factory.example;
 
-public class MacButton implements Button{
+public class MacButton implements Button {
     @Override
     public void onClick() {
         System.out.println("Mac button");

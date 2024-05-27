@@ -1,2 +1,4 @@
-package week10.adapter.example;public class JapaneseAdaptee {
+package week10.adapter.example;
+
+public class JapaneseAdaptee {
 }

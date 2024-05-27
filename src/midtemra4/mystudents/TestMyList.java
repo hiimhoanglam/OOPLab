@@ -1,4 +1,4 @@
-package mystudents;
+package midtemra4.mystudents;
 
 public class TestMyList {
     public static void main(String[] args) {

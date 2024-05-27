@@ -1,2 +1,5 @@
-package factory.dialogproblem;public interface Button {
+package factory.dialogproblem;
+
+public interface Button {
+    void render();
 }

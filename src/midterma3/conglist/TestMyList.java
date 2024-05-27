@@ -1,4 +1,4 @@
-package hus.oop.midterm.mylist;
+package midterma3.conglist;
 
 import java.io.File;
 import java.io.FileNotFoundException;

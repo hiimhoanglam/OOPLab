@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package week12.mylist;
 
 public class MyArrayListIterator implements MyIterator {
     /* GỢI Ý: */
@@ -20,6 +20,8 @@ public class MyArrayListIterator implements MyIterator {
      */
     public MyArrayListIterator(Object[] data) {
         /* TODO */
+        this.data = data;
+        this.currentPosition = 0;
     }
 
     /**
@@ -30,6 +32,7 @@ public class MyArrayListIterator implements MyIterator {
     @Override
     public boolean hasNext() {
         /* TODO */
+        return data[currentPosition] != null;
     }
 
     /**
@@ -39,5 +42,8 @@ public class MyArrayListIterator implements MyIterator {
     @Override
     public Object next() {
         /* TODO */
+        Object currentObj = data[currentPosition];
+        currentPosition++;
+        return currentObj;
     }
 }

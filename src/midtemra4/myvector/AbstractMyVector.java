@@ -1,4 +1,4 @@
-package myvector;
+package midtemra4.myvector;
 
 public abstract class AbstractMyVector implements MyVector {
 

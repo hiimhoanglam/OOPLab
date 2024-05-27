@@ -1,0 +1,22 @@
+"C:\Program Files\Java\jdk-19\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2023.1\lib\idea_rt.jar=60524:C:\Program Files\JetBrains\IntelliJ IDEA 2023.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath D:\OOP2\out\production\OOP2 week12.integration.IntegrationCalculatorTestDrive
+-----------ArrayPolynomial Tests-----------
+poly1: [3.0, 0.0, 2.0]
+poly2: [1.0, 1.0]
+poly1 + poly2: [4.0, 1.0, 2.0]
+poly1 - poly2: [2.0, -1.0, 2.0]
+poly1 * poly2: [3.0, 3.0, 2.0, 2.0]
+poly1(2): 11.0
+-----------ListPolynomial Tests-----------
+poly1: [3.0, 0.0, 2.0]
+poly2: [1.0, 1.0]
+poly1 + poly2: [4.0, 1.0, 2.0]
+poly1 - poly2: [2.0, -1.0, 2.0]
+poly1 * poly2: [3.0, 3.0, 2.0, 2.0]
+poly1(2): 11.0
+-----------IntegrationCalculator Tests-----------
+Polynomial: [1.0, 0.0, -1.0]
+Midpoint Rule result: 0.6669921875
+Simpson Rule result: 0.6666666666666666
+Trapezoid Rule result: 0.5
+
+Process finished with exit code 0

@@ -1,4 +1,4 @@
-package hus.oop.midterm.statistics;
+package midterma3.congstatistics;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;

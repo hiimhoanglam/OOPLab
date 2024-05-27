@@ -1,6 +1,6 @@
-package week10.observer.pseudocode;
+package week11.observer.pseudocode;
 
-public class LoggingListener implements EventListeners{
+public class LoggingListener implements EventListeners {
     @Override
     public void update(String data) {
 

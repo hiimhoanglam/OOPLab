@@ -1,4 +1,4 @@
-package week7.movable4;
+package week7.movable8;
 
 import week7.movable3.Movable;
 

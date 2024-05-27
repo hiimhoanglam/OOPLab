@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package finalweek12.mylist;
 
 public interface MyList extends MyIterable {
     /**

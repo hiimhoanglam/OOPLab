@@ -1,2 +1,8 @@
-package week11.visitor.computeruml;public class Demo {
+package week11.visitor.computeruml;
+
+public class Demo {
+    public static void main(String[] args) {
+        ComputerPart computer = new Computer();
+        computer.accept(new ComputerPartDisplayVisitor());
+    }
 }

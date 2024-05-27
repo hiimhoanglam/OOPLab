@@ -1,4 +1,4 @@
-package midterma3.statistics;
+package midterma3.hoanglamstatistics;
 
 import java.util.Arrays;
 

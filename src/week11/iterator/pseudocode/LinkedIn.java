@@ -1,2 +1,4 @@
-package week11.iterator.pseudocode;public class LinkedIn {
+package week11.iterator.pseudocode;
+
+public class LinkedIn {
 }

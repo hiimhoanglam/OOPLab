@@ -14,6 +14,7 @@ public class App {
 
     public static void main(String[] args) {
         init();
+        System.out.println("------------Test original data----------------");
         testOriginalData();
 
         /* Yêu cầu:
@@ -26,10 +27,28 @@ public class App {
           <TenSinhVien_MaSinhVien_BookManager>.zip (Ví dụ, NguyenVanA_123456_BookManager.zip),
           nộp lên classroom.
          */
+        System.out.println("---------Test highest price---------");
+        testFilterBooksHighestPrice();
+        System.out.println("---------Test lowest price---------");
+        testFilterBooksLowestPrice();
+        System.out.println("---------Test filter book of author---------");
+        testFilterBooksOfAuthor();
+        System.out.println("---------Test filter book of genre---------");
+        testFilterBooksOfGenre();
+        System.out.println("---------Test filter book of publisher---------");
+        testFilterBooksOfPublisher();
+        System.out.println("---------Test price of book decreasing---------");
+        testPriceOfBooksDecreasing();
+        System.out.println("---------Test price of book increasing---------");
+        testPriceOfBooksIncreasing();
+        System.out.println("---------Test sort decreasing genre and price---------");
+        testSortDecreasingGenreAndPrice();
+        System.out.println("---------Test sort increasing genre and price---------");
+        testSortIncreasingGenreAndPrice();
     }
 
     public static void init() {
-        String filePath = "data/books.csv";
+        String filePath = "D:\\OOP2\\src\\midterm\\books.csv";
         readListData(filePath);
     }
 
@@ -49,7 +68,20 @@ public class App {
                 if (dataList.get(0).equals("title")) {
                     continue;
                 }
-
+                String title = dataList.get(0);
+                String author = dataList.get(1);
+                String genre = dataList.get(2);
+                int pages = Integer.parseInt(dataList.get(3));
+                double price = Double.parseDouble(dataList.get(4));
+                String publisher = dataList.get(5);
+                Book newBook = new Book.BookBuilder(title)
+                        .withAuthor(author)
+                        .withGenre(genre)
+                        .withPages(pages)
+                        .withPrice(price)
+                        .withPublisher(publisher)
+                        .build();
+                bookManager.append(newBook);
                 /*
                 TODO
                 Đọc được dữ liệu, tạo ra các đối tượng sinh viên ở đây, và cho vào bookManager để quản lý.
@@ -105,41 +137,48 @@ public class App {
      */
     public static void testSortIncreasingGenreAndPrice() {
         /* TODO */
+        List<Book> books = bookManager.sortIncreasingGenreAndPrice();
+        System.out.println(books);
     }
 
     /**
      * Test sắp xếp sách theo tiêu chí, đầu tiên theo genre giảm dần, sau đó theo giá giảm dần.
      */
     public static void testSortDecreasingGenreAndPrice() {
-        /* TODO */
+        List<Book> books = bookManager.sortDecreasingGenreAndPrice();
+        System.out.println(books);
     }
 
     /**
      * Test sắp xếp sách theo giá tăng dần.
      */
     public static void testPriceOfBooksIncreasing() {
-        /* TODO */
+        List<Book> books = bookManager.sortIncreasingPrice();
+        System.out.println(books);
     }
 
     /**
      * Test sắp xếp sách theo giá giảm dần
      */
     public static void testPriceOfBooksDecreasing() {
-        /* TODO */
+        List<Book> books = bookManager.sortDecreasingPrice();
+        System.out.println(books);
     }
 
     /**
      * Test lọc sách có giá rẻ nhất.
      */
     public static void testFilterBooksLowestPrice() {
-        /* TODO */
+        Book books = bookManager.sortIncreasingPrice().get(0);
+        System.out.println(books);
     }
 
     /**
      * Test lọc sách có giá cao nhất.
      */
     public static void testFilterBooksHighestPrice() {
-        /* TODO */
+        Book books = bookManager.sortDecreasingPrice().get(0);
+        System.out.println(books);
     }
 
     /**
@@ -147,6 +186,8 @@ public class App {
      */
     public static void testFilterBooksOfAuthor() {
         /* TODO */
+        List<Book> books = bookManager.filterBooksOfAuthor("Maugham William S");
+        System.out.println(books);
     }
 
     /**
@@ -154,6 +195,8 @@ public class App {
      */
     public static void testFilterBooksOfPublisher() {
         /* TODO */
+        List<Book> books = bookManager.filterBooksOfPublisher("Random House");
+        System.out.println(books);
     }
 
     /**
@@ -161,5 +204,7 @@ public class App {
      */
     public static void testFilterBooksOfGenre() {
         /* TODO */
+        List<Book> books = bookManager.filterBooksOfGenre("data_science");
+        System.out.println(books);
     }
 }

@@ -1,4 +1,4 @@
-package hus.oop.integration;
+package week12.integration;
 
 public class TrapezoidRule implements Integrator {
     private double precision;
@@ -20,7 +20,22 @@ public class TrapezoidRule implements Integrator {
      */
     @Override
     public double integrate(Polynomial poly, double lower, double upper) {
-        /* TODO */
+        int n = 1; // initial number of subintervals
+        double I_n = integrate(poly, lower, upper, n);
+        double I_2n;
+
+        for (int i = 0; i < maxIterations; i++) {
+            n *= 2;
+            I_2n = integrate(poly, lower, upper, n);
+
+            if (Math.abs(I_2n - I_n) / 3 < precision) {
+                return I_2n;
+            }
+
+            I_n = I_2n;
+        }
+
+        return I_n; // Return the last computed value if precision criterion not met within maxIterations
     }
 
     /**
@@ -32,6 +47,14 @@ public class TrapezoidRule implements Integrator {
      * @return giá trị xấp xỉ giá trị tích phân.
      */
     private double integrate(Polynomial poly, double lower, double upper, int numOfSubIntervals) {
-        /* TODO */
+        double h = (upper - lower) / numOfSubIntervals;
+        double sum = 0.5 * (poly.evaluate(lower) + poly.evaluate(upper));
+
+        for (int i = 1; i < numOfSubIntervals; i++) {
+            double x = lower + i * h;
+            sum += poly.evaluate(x);
+        }
+
+        return sum * h;
     }
 }

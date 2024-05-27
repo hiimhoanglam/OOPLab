@@ -1,4 +1,4 @@
-package week11.abstractfactory;
+package week11.abstractfactory.pseudocode;
 
 public class WinFactory implements GUIFactory{
     @Override

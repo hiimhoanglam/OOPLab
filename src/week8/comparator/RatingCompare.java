@@ -1,2 +1,10 @@
-package week8.comparator;public class RatingCompare {
+package week8.comparator;
+
+import java.util.Comparator;
+
+public class RatingCompare implements Comparator<Movie> {
+    @Override
+    public int compare(Movie left, Movie right) {
+        return Double.compare(left.getRating(), right.getRating());
+    }
 }

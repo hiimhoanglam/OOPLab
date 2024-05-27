@@ -1,4 +1,6 @@
-package hus.oop.mylist;
+package week12.mylist;
+
+import java.util.Arrays;
 
 public class MyArrayList extends MyAbstractList {
     private static final int DEFAULT_CAPACITY = 2;
@@ -9,7 +11,8 @@ public class MyArrayList extends MyAbstractList {
      * Khởi tạo dữ liệu mặc định.
      */
     public MyArrayList() {
-        /* TODO */
+        this.data = new Object[DEFAULT_CAPACITY];
+        this.size = 0;
     }
 
     /**
@@ -18,8 +21,9 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public int size() {
-        /* TODO */
+        return this.size;
     }
+
 
     /**
      * Lấy phần tử ở vị trí index trong list.
@@ -28,7 +32,8 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public Object get(int index) {
-        /* TODO */
+        checkIndex(index);
+        return data[index];
     }
 
     /**
@@ -37,7 +42,11 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public void remove(int index) {
-        /* TODO */
+        checkIndex(index);
+        for (int i = index; i < this.size - 1; i++) {
+            data[i] = data[i+1];
+        }
+        size--;
     }
 
     /**
@@ -47,7 +56,14 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public void append(Object payload) {
-        /* TODO */
+        if (payload == null) {
+            return;
+        }
+        if (size == data.length) {
+            enlarge();
+        }
+        data[size] = payload;
+        size++;
     }
 
     /**
@@ -58,7 +74,16 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public void insert(Object payload, int index) {
-        /* TODO */
+       if (index == size) {
+           append(payload);
+           return;
+       }
+       checkIndex(index);
+       for (int i = size; i > index; i--) {
+           data[i] = data[i-1];
+       }
+       data[index] = payload;
+       size++;
     }
 
     /**
@@ -67,7 +92,7 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public MyIterator iterator() {
-        /* TODO */
+        return new MyArrayListIterator(data);
     }
 
     /**
@@ -75,5 +100,6 @@ public class MyArrayList extends MyAbstractList {
      */
     private void enlarge() {
         /* TODO */
+        data = Arrays.copyOf(data, data.length * 2);
     }
 }

@@ -1,4 +1,4 @@
-package mystudents;
+package midtemra4.mystudents;
 
 import java.util.Objects;
 

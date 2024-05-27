@@ -1,2 +1,5 @@
-package week11.iterator.example;public class EmployeeIterable {
+package week11.iterator.example;
+
+public interface EmployeeIterable {
+    public Iterator getIterator();
 }

@@ -1,6 +1,7 @@
-package hus.oop.polynomial;
+package midtermkhoakhoa.polynomial;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class ArrayPolynomial extends AbstractPolynomial {
     private static final int DEFAULT_CAPACITY = 8;
@@ -12,8 +13,15 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public ArrayPolynomial() {
         /* TODO */
+        this.coefficents = new double[DEFAULT_CAPACITY];
     }
-
+    public ArrayPolynomial(double[] array) {
+        this.coefficents = array;
+        this.size = array.length;
+    }
+    private boolean checkBoundaries(int index) {
+        return index >= 0 && index < size;
+    }
     /**
      * Lấy hệ số của đa thức tại phần tử index
      * @return hệ số tại phần tử index.
@@ -21,6 +29,10 @@ public class ArrayPolynomial extends AbstractPolynomial {
     @Override
     public double coefficientAt(int index) {
         /* TODO */
+        if (!checkBoundaries(index)) {
+            return -1;
+        }
+        return coefficents[index];
     }
 
     /**
@@ -30,6 +42,7 @@ public class ArrayPolynomial extends AbstractPolynomial {
     @Override
     public double[] coefficients() {
         /* TODO */
+        return Arrays.copyOf(coefficents, size);
     }
 
     /**
@@ -38,7 +51,14 @@ public class ArrayPolynomial extends AbstractPolynomial {
      * @return đa thức hiện tại.
      */
     public void insertAtStart(double coefficient) {
-        /* TODO */
+        if (size == coefficents.length) {
+            allocateMore();
+        }
+        for (int i = size; i > 0; i--) {
+            coefficents[i] = coefficents[i-1];
+        }
+        coefficents[0] = coefficient;
+        size++;
     }
 
     /**
@@ -47,7 +67,11 @@ public class ArrayPolynomial extends AbstractPolynomial {
      * @return đa thức hiện tại.
      */
     public void insertAtEnd(double coefficient) {
-        /* TODO */
+        if (size == coefficents.length) {
+            allocateMore();
+        }
+        coefficents[size] = coefficient;
+        size++;
     }
 
     /**
@@ -58,6 +82,17 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public void insertAtPosition(int index, double coefficient) {
         /* TODO */
+        if (size == coefficents.length) {
+            allocateMore();
+        }
+        if (!checkBoundaries(index)) {
+            return;
+        }
+        for (int i = size; i > index; i--) {
+            coefficents[i] = coefficents[i - 1];
+        }
+        coefficents[index] = coefficient;
+        size++;
     }
 
     /**
@@ -68,6 +103,10 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public void set(int index, double coefficient) {
         /* TODO */
+        if (!checkBoundaries(index)) {
+            return;
+        }
+        coefficents[index] = coefficient;
     }
 
     /**
@@ -77,6 +116,7 @@ public class ArrayPolynomial extends AbstractPolynomial {
     @Override
     public int degree() {
         /* TODO */
+        return this.size + 1;
     }
 
     /**
@@ -86,6 +126,11 @@ public class ArrayPolynomial extends AbstractPolynomial {
     @Override
     public double evaluate(double x) {
         /* TODO */
+        double result = coefficents[coefficents.length - 1];
+        for (int i = coefficents.length - 2; i >= 0; i--) {
+            result = result * x + coefficents[i];
+        }
+        return result;
     }
 
     /**
@@ -95,6 +140,7 @@ public class ArrayPolynomial extends AbstractPolynomial {
     @Override
     public Polynomial derivative() {
         /* TODO */
+        return new ArrayPolynomial(differentiate());
     }
 
     /**
@@ -104,6 +150,16 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public ArrayPolynomial plus(ArrayPolynomial another) {
         /* TODO */
+        int size = Math.max(this.degree(), another.degree()) - 1;
+        double[] sum = new double[size];
+
+        // Initialize the product polynomial
+        if (this.size >= 0) System.arraycopy(coefficents, 0, sum, 0, this.size);
+
+        for (int i = 0; i < another.size; i++) {
+            sum[i] += another.coefficientAt(i);
+        }
+        return new ArrayPolynomial(sum);
     }
 
     /**
@@ -113,6 +169,16 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public ArrayPolynomial minus(ArrayPolynomial another) {
         /* TODO */
+        int size = Math.max(this.degree(), another.degree()) - 1;
+        double[] sum = new double[size];
+
+        // Initialize the product polynomial
+        if (this.size >= 0) System.arraycopy(coefficents, 0, sum, 0, this.size);
+
+        for (int i = 0; i < another.degree() - 1; i++) {
+            sum[i] -= another.coefficientAt(i);
+        }
+        return new ArrayPolynomial(sum);
     }
 
     /**
@@ -122,12 +188,33 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public ArrayPolynomial multiply(ArrayPolynomial another) {
         /* TODO */
+        int sharedSize = this.size + another.degree() - 1 - 1;
+        double[] prod = new double[sharedSize];
+
+        // Multiply two polynomials term by term
+        // Take ever term of first polynomial
+        for (int i = 0; i < this.size; i++)
+        {
+            // Multiply the current term of first polynomial
+            // with every term of second polynomial.
+            for (int j = 0; j < another.degree() - 1; j++)
+            {
+                prod[i + j] += coefficents[i] * another.coefficientAt(j);
+            }
+        }
+        return new ArrayPolynomial(prod);
     }
 
     /**
      * Thêm kích thước mảng gấp đôi để lưu đa thức.
      */
     private void allocateMore() {
-        /* TODO */
+        double[] newData = new double[coefficents.length * 2];
+        System.arraycopy(coefficents,
+                0,
+                newData,
+                0,
+                size);
+        coefficents = newData;
     }
 }

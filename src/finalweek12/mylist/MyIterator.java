@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package finalweek12.mylist;
 
 public interface MyIterator {
     /**
@@ -12,4 +12,5 @@ public interface MyIterator {
      * @return
      */
     Object next();
+    void reset();
 }

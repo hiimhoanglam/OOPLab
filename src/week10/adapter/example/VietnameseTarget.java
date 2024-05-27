@@ -1,2 +1,5 @@
-package week10.adapter.example;public class VietnameseTarget {
+package week10.adapter.example;
+
+public interface VietnameseTarget {
+    void send(String words);
 }

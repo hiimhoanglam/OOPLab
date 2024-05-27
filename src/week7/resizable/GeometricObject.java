@@ -1,4 +1,4 @@
-package week7.geometricobject;
+package week7.resizable;
 
 public interface GeometricObject {
     double getArea();

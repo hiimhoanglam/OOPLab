@@ -1,2 +1,5 @@
-package factory.abstractfactory;public class Button {
+package factory.abstractfactory;
+
+public interface Button {
+    void onClick();
 }

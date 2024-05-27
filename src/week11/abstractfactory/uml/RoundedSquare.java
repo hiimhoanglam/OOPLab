@@ -1,2 +1,8 @@
-package week11.abstractfactory.uml;public class RoundedSquare {
+package week11.abstractfactory.uml;
+
+public class RoundedSquare implements Shape{
+    @Override
+    public void draw() {
+        System.out.println("Drawing rounded square");
+    }
 }

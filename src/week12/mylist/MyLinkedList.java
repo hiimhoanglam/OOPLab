@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package week12.mylist;
 
 public class MyLinkedList extends MyAbstractList {
     private MyLinkedListNode head;
@@ -8,7 +8,7 @@ public class MyLinkedList extends MyAbstractList {
      * Khởi tạo dữ liệu mặc định.
      */
     public MyLinkedList() {
-        /* TODO */
+        this.head = new MyLinkedListNode(0);
     }
 
     /**
@@ -17,7 +17,7 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public int size() {
-        /* TODO */
+        return this.size;
     }
 
     /**
@@ -27,7 +27,7 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public Object get(int index) {
-        /* TODO */
+        return getNodeByIndex(index).getPayload();
     }
 
     /**
@@ -36,7 +36,18 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public void remove(int index) {
-        /* TODO */
+        checkIndex(index);
+        if (index == 0) {
+            head = head.getNext();
+        }
+        else {
+            MyLinkedListNode curr = head;
+            for (int i = 0; i < index - 1; i++) {
+                curr = curr.getNext();
+            }
+            curr.setNext(getNodeByIndex(index).getNext());
+        }
+        size--;
     }
 
     /**
@@ -45,7 +56,19 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public void append(Object payload) {
-        /* TODO */
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
+        if (size == 0) {
+            head = newNode;
+        }
+        else {
+            MyLinkedListNode curr = head;
+            while (curr.getNext() != null) {
+                curr = curr.getNext();
+            }
+            curr.setNext(new MyLinkedListNode(payload));
+        }
+        size++;
+
     }
 
     /**
@@ -55,7 +78,25 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public void insert(Object payload, int index) {
-        /* TODO */
+        if (index == size) {
+            append(payload);
+            return;
+        }
+        checkIndex(index);
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
+        if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
+        }
+        else {
+            MyLinkedListNode curr = head;
+            for (int i = 0; i < index - 1; i++) {
+                curr = curr.getNext();
+            }
+            newNode.setNext(curr.getNext());
+            curr.setNext(newNode);
+        }
+        size++;
     }
 
     /**
@@ -64,7 +105,7 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public MyIterator iterator() {
-        /* TODO */
+        return new MyLinkedListIterator(head);
     }
 
     /**
@@ -73,6 +114,11 @@ public class MyLinkedList extends MyAbstractList {
      * @return
      */
     private MyLinkedListNode getNodeByIndex(int index) {
-        /* TODO */
+        checkIndex(index);
+        MyLinkedListNode current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current;
     }
 }

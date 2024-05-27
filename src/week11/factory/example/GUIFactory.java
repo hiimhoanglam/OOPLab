@@ -1,4 +1,4 @@
-package factory.abstractfactory;
+package week11.factory.example;
 
 public abstract class GUIFactory {
     public abstract Button createButton();

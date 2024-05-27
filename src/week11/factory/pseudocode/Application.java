@@ -1,4 +1,4 @@
-package factory.dialogproblem;
+package week11.factory.pseudocode;
 
 import java.util.Scanner;
 

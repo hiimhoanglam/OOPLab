@@ -1,4 +1,4 @@
-package hus.oop.mylist;
+package week12.mylist;
 
 public class MyLinkedListIterator implements MyIterator {
     /* GỢI Ý: */
@@ -23,7 +23,7 @@ public class MyLinkedListIterator implements MyIterator {
      */
     @Override
     public boolean hasNext() {
-        /* TODO */
+        return currentNode != null;
     }
 
     /**
@@ -32,6 +32,8 @@ public class MyLinkedListIterator implements MyIterator {
      */
     @Override
     public Object next() {
-        /* TODO */
+        MyLinkedListNode curr = currentNode;
+        currentNode = currentNode.getNext();
+        return curr.getPayload();
     }
 }

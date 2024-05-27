@@ -1,4 +1,4 @@
-package factory.dialogproblem;
+package week11.factory.pseudocode;
 
 public abstract class Dialog {
     public abstract Button createButton();

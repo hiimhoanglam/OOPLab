@@ -1,4 +1,4 @@
-package midterma3.mylist;
+package midterma3.hoanglamlist;
 
 public class TestMyList {
     public static void main(String[] args) {

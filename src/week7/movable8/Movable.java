@@ -1,4 +1,4 @@
-package week7.movable4;
+package week7.movable8;
 
 public interface Movable {
     void moveUp();

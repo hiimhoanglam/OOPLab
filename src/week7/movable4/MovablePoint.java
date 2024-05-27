@@ -1,6 +1,8 @@
-package week7.movable3;
+package week7.movable4;
 
-public class MovablePoint implements Movable{
+import week7.movable3.Movable;
+
+public class MovablePoint implements Movable {
     int x;
     int y;
     int xSpeed;

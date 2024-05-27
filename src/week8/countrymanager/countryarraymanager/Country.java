@@ -1,4 +1,4 @@
-package hus.oop.countryarraymanager;
+package week8.countrymanager.countryarraymanager;
 
 public abstract class Country {
     protected String code;

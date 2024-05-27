@@ -1,2 +1,5 @@
-package week11.abstractfactory.example;public interface Sofa {
+package week11.abstractfactory.example;
+
+public interface Sofa {
+    void sleepOn();
 }

@@ -1,4 +1,4 @@
-package midterma3.statistics;
+package midterma3.hoanglamstatistics;
 
 public abstract class AbstractDataSet implements DataSet {
     /**
@@ -7,11 +7,15 @@ public abstract class AbstractDataSet implements DataSet {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < size(); i++) {
-            sb.append("[").append(element(i)).append("] ");
+            sb.append(element(i));
+            if (i < size() - 1) {
+                sb.append(", ");
+            }
         }
-        return sb.substring(0, sb.length() - 1);
+        sb.append("]");
+        return sb.toString();
     }
 
 }

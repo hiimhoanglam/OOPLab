@@ -1,9 +1,6 @@
 package midterm.bookmanager;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BookManager {
     private List<Book> bookList;
@@ -14,6 +11,7 @@ public class BookManager {
 
     public List<Book> getBookList() {
         /* TODO */
+        return this.bookList;
     }
 
     /**
@@ -24,6 +22,7 @@ public class BookManager {
      */
     private boolean checkBoundaries(int index, int limit) {
         /* TODO */
+        return index < 0 || index > limit;
     }
 
     /**
@@ -32,6 +31,7 @@ public class BookManager {
      */
     public void append(Book book) {
         /* TODO */
+        bookList.add(book);
     }
 
     /**
@@ -41,6 +41,10 @@ public class BookManager {
      */
     public void add(Book book, int index) {
         /* TODO */
+        if(checkBoundaries(index, bookList.size() - 1)) {
+            throw new IndexOutOfBoundsException();
+        }
+        bookList.add(index, book);
     }
 
     /**
@@ -49,6 +53,10 @@ public class BookManager {
      */
     public void remove(int index) {
         /* TODO */
+        if(checkBoundaries(index, bookList.size() - 1)) {
+            throw new IndexOutOfBoundsException();
+        }
+        bookList.remove(index);
     }
 
     /**
@@ -57,6 +65,10 @@ public class BookManager {
      */
     public void remove(Book book) {
         /* TODO */
+        if (book == null) {
+            return;
+        }
+        bookList.remove(book);
     }
 
     /**
@@ -66,6 +78,10 @@ public class BookManager {
      */
     public Book bookAt(int index) {
         /* TODO */
+        if(checkBoundaries(index, bookList.size() - 1)) {
+            throw new IndexOutOfBoundsException();
+        }
+        return bookList.get(index);
     }
 
     /**
@@ -74,6 +90,25 @@ public class BookManager {
      */
     public List<Book> sortIncreasingByGenreAndTitle() {
         /* TODO */
+        Book[] array = bookList.toArray(new Book[0]);
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int minIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j].compareTo(array[minIndex]) < 0)
+                    minIndex = j;
+
+            // Swap the found minimum element with the first
+            // element
+            Book temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     /**
@@ -83,6 +118,38 @@ public class BookManager {
      */
     public List<Book> sortIncreasingGenreAndPrice() {
         /* TODO */
+        List<Book> result = bookList;
+        MyBookComparator myBookComparator = new MyBookComparator() {
+            @Override
+            public int compare(Book left, Book right) {
+                int genreComparison = left.getGenre().compareTo(right.getGenre());
+                if (genreComparison != 0) {
+                    return genreComparison;
+                }
+                return Double.compare(right.getPrice(), left.getPrice());
+            }
+        };
+        Book[] array = bookList.toArray(new Book[0]);;
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int minIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (myBookComparator.compare(array[j], array[minIndex]) < 0) {
+                    minIndex = j;
+                }
+
+            // Swap the found minimum element with the first
+            // element
+            Book temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
+
     }
 
     /**
@@ -92,6 +159,37 @@ public class BookManager {
      */
     public List<Book> sortDecreasingGenreAndPrice() {
         /* TODO */
+        List<Book> result = bookList;
+        MyBookComparator myBookComparator = new MyBookComparator() {
+            @Override
+            public int compare(Book left, Book right) {
+                int genreComparison = left.getGenre().compareTo(right.getGenre());
+                if (genreComparison != 0) {
+                    return genreComparison;
+                }
+                return Double.compare(left.getPrice(), right.getPrice());
+            }
+        };
+        Book[] array = bookList.toArray(new Book[0]);;
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the maximum element in unsorted array
+            int maxIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (myBookComparator.compare(array[j], array[maxIndex]) > 0) {
+                    maxIndex = j;
+                }
+
+            // Swap the found minimum element with the first
+            // element
+            Book temp = array[maxIndex];
+            array[maxIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     /**
@@ -99,7 +197,25 @@ public class BookManager {
      * @return
      */
     public List<Book> sortIncreasingPrice() {
-        /* TODO */
+        Book[] array = bookList.toArray(new Book[0]);;
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int minIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j].getPrice() < array[minIndex].getPrice())
+                    minIndex = j;
+
+            // Swap the found minimum element with the first
+            // element
+            Book temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     /**
@@ -108,6 +224,25 @@ public class BookManager {
      */
     public List<Book> sortDecreasingPrice() {
         /* TODO */
+        Book[] array = bookList.toArray(new Book[0]);;
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the maximum element in unsorted array
+            int maxIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j].getPrice() > array[maxIndex].getPrice())
+                    maxIndex = j;
+
+            // Swap the found maximum element with the first
+            // element
+            Book temp = array[maxIndex];
+            array[maxIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     /**
@@ -115,7 +250,25 @@ public class BookManager {
      * @return
      */
     public List<Book> sortIncreasingPages() {
-        /* TODO */
+        Book[] array = bookList.toArray(new Book[0]);;
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int minIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j].getPages() < array[minIndex].getPages())
+                    minIndex = j;
+
+            // Swap the found minimum element with the first
+            // element
+            Book temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     /**
@@ -123,7 +276,24 @@ public class BookManager {
      * @return
      */
     public List<Book> sortDecreasingPages() {
-        /* TODO */
+        Book[] array = bookList.toArray(new Book[0]);;
+        int n = array.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the maximum element in unsorted array
+            int maxIndex = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j].getPages() > array[maxIndex].getPages())
+                    maxIndex = j;
+
+            // Swap the found maximum element with the first element
+            Book temp = array[maxIndex];
+            array[maxIndex] = array[i];
+            array[i] = temp;
+        }
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     /**
@@ -133,6 +303,24 @@ public class BookManager {
      */
     public List<Book> filterHighestPages(int howMany) {
         /* TODO */
+        int maxPage = bookList.get(0).getPages();
+        for (Book book: bookList) {
+            if (book.getPages() > maxPage) {
+                maxPage = book.getPages();
+            }
+        }
+        List<Book> result = new ArrayList<>();
+        int currentNumber = 0;
+        for (Book book: bookList) {
+            if (book.getPages() == maxPage) {
+                result.add(book);
+                currentNumber++;
+            }
+            if (currentNumber == howMany) {
+                break;
+            }
+        }
+        return result;
     }
 
     /**
@@ -142,6 +330,13 @@ public class BookManager {
      */
     public List<Book> filterBooksPagesHigherThan(double lowerBound) {
         /* TODO */
+        List<Book> result = new ArrayList<>();
+        for (Book book: bookList) {
+            if (book.getPages() > lowerBound) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     /**
@@ -151,6 +346,24 @@ public class BookManager {
      */
     public List<Book> filterBookLowestPages(int howMany) {
         /* TODO */
+        int minPage = bookList.get(0).getPages();
+        for (Book book: bookList) {
+            if (book.getPages() < minPage) {
+                minPage = book.getPages();
+            }
+        }
+        List<Book> result = new ArrayList<>();
+        int currentNumber = 0;
+        for (Book book: bookList) {
+            if (book.getPages() == minPage) {
+                result.add(book);
+                currentNumber++;
+            }
+            if (currentNumber == howMany) {
+                break;
+            }
+        }
+        return result;
     }
 
     /**
@@ -160,6 +373,13 @@ public class BookManager {
      */
     public List<Book> filterBooksPagesLowerThan(double upperBound) {
         /* TODO */
+        List<Book> result = new ArrayList<>();
+        for (Book book: bookList) {
+            if (book.getPages() < upperBound) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     /**
@@ -169,6 +389,13 @@ public class BookManager {
      */
     public List<Book> filterBooksOfPublisher(String publisher) {
         /* TODO */
+        List<Book> result = new ArrayList<>();
+        for (Book book: bookList) {
+            if (book.getPublisher().equals(publisher)) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     /**
@@ -178,6 +405,13 @@ public class BookManager {
      */
     public List<Book> filterBooksOfGenre(String genre) {
         /* TODO */
+        List<Book> result = new ArrayList<>();
+        for (Book book: bookList) {
+            if (book.getGenre().equals(genre)) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     /**
@@ -187,6 +421,13 @@ public class BookManager {
      */
     public List<Book> filterBooksOfAuthor(String author) {
         /* TODO */
+        List<Book> result = new ArrayList<>();
+        for (Book book: bookList) {
+            if (book.getAuthor().equals(author)) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     public static String titleOfBooksToString(List<Book> bookList) {

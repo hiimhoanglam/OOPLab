@@ -1,4 +1,4 @@
-package week10.observer.pseudocode;
+package week11.observer.pseudocode;
 
 public class Editor {
 }

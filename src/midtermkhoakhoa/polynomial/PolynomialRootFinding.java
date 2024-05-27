@@ -1,4 +1,4 @@
-package hus.oop.polynomial;
+package midtermkhoakhoa.polynomial;
 
 public class PolynomialRootFinding {
     private Polynomial poly;
@@ -10,6 +10,7 @@ public class PolynomialRootFinding {
      */
     public PolynomialRootFinding(Polynomial polynomial) {
         /* TODO */
+        this.poly = polynomial;
     }
 
     /**
@@ -18,15 +19,16 @@ public class PolynomialRootFinding {
      * @param rootSolver
      */
     public PolynomialRootFinding(Polynomial polynomial, RootSolver rootSolver) {
-        /* TODO */
+        this.poly = polynomial;
+        this.rootSolver = rootSolver;
     }
 
     public void setPoly(Polynomial poly) {
-        /* TODO */
+        this.poly = poly;
     }
 
     public void setRootSolver(RootSolver rootSolver) {
-        /* TODO */
+       this.rootSolver = rootSolver;
     }
 
     /**
@@ -36,6 +38,6 @@ public class PolynomialRootFinding {
      * @return
      */
     public double solve(double lower, double upper) {
-        /* TODO */
+        return rootSolver.solve(poly, lower, upper);
     }
 }
