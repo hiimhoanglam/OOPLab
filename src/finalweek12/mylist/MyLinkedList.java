@@ -11,6 +11,11 @@ public class MyLinkedList extends MyAbstractList {
         //Default value for head = 0
         this.head = new MyLinkedListNode(0);
     }
+    public MyLinkedList(Object[] data) {
+        for (Object object: data) {
+            append(object);
+        }
+    }
 
     /**
      * Lấy kích thước của list.
