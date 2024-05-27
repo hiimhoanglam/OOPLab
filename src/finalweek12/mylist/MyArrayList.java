@@ -50,7 +50,8 @@ public class MyArrayList extends MyAbstractList {
         for (int i = index; i < size - 1; i++) {
             data[i] = data[i+1];
         }
-        data[size] = null;
+        //The element at index size - 1 will be removed since the element has shifted to the left
+        data[size-1] = null;
         size--;
     }
 
